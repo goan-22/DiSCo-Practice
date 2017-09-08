@@ -6,7 +6,7 @@ long long int a[MM];
 int main()
 {
 	long long int i,j;
-	for(i=1;i<=MM;i++)
+	for(i=1;i<=MM;i++)					//Array a contains sum of factors of i at ith index
 	{
 		for(j=i;j<=MM;j+=i)
 		{
