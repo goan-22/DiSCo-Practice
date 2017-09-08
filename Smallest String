@@ -1,0 +1,63 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	int n,k,i;
+	cin>>n>>k;
+
+	char a[n];
+
+	cin>>a;
+
+	int current=0,first=0,cnt=0;
+
+	while(cnt<k && current<n-1)                                     //The count of deleted elements should not go more than k, and current shouldn't go out of boundds of array
+	{
+
+        while(a[current]=='-')                                    //To get directly to the first element which isn't already deleted
+			    current++;
+
+        int t=1;
+        
+        while(t+current<n && a[t+current]=='-')                   //To find second element after a[current] that isn't already deleted
+            t++;
+      
+	      if(a[current]<=a[current+t])                              //If first element is lexicographically smaller, move current to next element
+        {
+            current+=t;
+            continue;
+        }
+
+        if(a[current]>a[current+t])                               //If second element is smaller, delete the first character and move current to first element
+        {
+          a[current]='-';
+          current=first;
+          cnt++;
+
+        }
+	}
+	current=n-1;
+
+
+	for(int m=1;m<=k-cnt;)                                         //If k deletions haven't been made, then start deleting elements one by one from right side. this is possible because elements are arranged in increasing order before this step.
+	{
+	    if(a[current]!='-')
+        {
+            a[current]='-';
+            current--;
+            m++;
+        }
+        else
+            current--;
+    }
+
+	for(i=0;i<n;i++)
+	{
+		if(a[i]!='-')
+			cout<<a[i];
+	}
+return 0;
+}
+
+
