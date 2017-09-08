@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define MM 1000100
+
+long long int a[MM];
+int main()
+{
+	long long int i,j;
+	for(i=1;i<=MM;i++)
+	{
+		for(j=i;j<=MM;j+=i)
+		{
+			a[j]=a[j]+i;
+		}
+	}
+
+	long long int t;
+	cin>>t;
+	while(t--)
+	{
+		long long int num;
+		cin>>num;
+
+		cout<<a[num]<<endl;
+	}
+
+
+return 0;
+}
+
